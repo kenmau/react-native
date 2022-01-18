@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, Image, Text, View, TextInput, Button } from 'react-native'
-
+import React, {Component} from 'react';
+import {StyleSheet, Image, Text, View, TextInput, Button} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +21,8 @@ const styles = StyleSheet.create({
     color: 'blue',
     fontWeight: 'bold',
     fontSize: 30,
-  }
-})
+  },
+});
 
 // MARK: Button
 
@@ -36,10 +35,7 @@ export default class ButtonExample extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
-          <Button 
-            onPress={this._onPressbutton}
-            title="Press Me"
-          />
+          <Button onPress={this._onPressbutton} title="Press Me" />
         </View>
         <View style={styles.buttonContainer}>
           <Button
@@ -49,13 +45,10 @@ export default class ButtonExample extends Component {
           />
         </View>
         <View style={styles.alternativeLayoutButtonContainer}>
-          <Button
-            onPress={this._onPressbutton}
-            title="This Looks Great"
-          />
+          <Button onPress={this._onPressbutton} title="This Looks Great" />
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -76,25 +69,26 @@ export class PizzaTranslator extends Component {
           value={this.state.text}
         />
         <Text style={{padding: 10, fontSize: 42}}>
-          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+          {this.state.text
+            .split(' ')
+            .map((word) => word && '🍕')
+            .join(' ')}
         </Text>
       </View>
     );
   }
 }
 
-
-
 // MARK: FlexDirection
 export class FlexDirectionBasics extends Component {
   render() {
     return (
-      <View style={{flex: 1, flexDirection:'row'}}>
-        <View style={{width:50, height:50, backgroundColor:'powderblue'}} />
-        <View style={{width:100, height:100, backgroundColor:'skyblue'}} />
-        <View style={{width:100, height:100, backgroundColor:'steelblue'}} />
+      <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
+        <View style={{width: 100, height: 100, backgroundColor: 'skyblue'}} />
+        <View style={{width: 100, height: 100, backgroundColor: 'steelblue'}} />
       </View>
-    )
+    );
   }
 }
 
@@ -106,7 +100,7 @@ export class FlexDimensionsBasics extends Component {
         <View style={{flex: 2, backgroundColor: 'skyblue'}} />
         <View style={{flex: 3, backgroundColor: 'steelblue'}} />
       </View>
-    )
+    );
   }
 }
 
@@ -119,22 +113,23 @@ export class FixedDimensionsBasics extends Component {
         <View style={{width: 100, height: 100, backgroundColor: 'skyblue'}} />
         <View style={{width: 200, height: 200, backgroundColor: 'steelblue'}} />
       </View>
-    )
+    );
   }
 }
 
-// MARK: State Blink Exercise 
+// MARK: State Blink Exercise
 class Blink extends Component {
-
   intervalId = 0;
 
-  componentDidMount(){
+  componentDidMount() {
     // Toggle the state every second
-    this.intervalId = setInterval(() => (
-      this.setState(previousState => (
-        { isShowingText: !previousState.isShowingText }
-      ))
-    ), 1000);
+    this.intervalId = setInterval(
+      () =>
+        this.setState((previousState) => ({
+          isShowingText: !previousState.isShowingText,
+        })),
+      1000,
+    );
   }
 
   componentWillUnmount() {
@@ -142,50 +137,48 @@ class Blink extends Component {
   }
 
   //state object
-  state = { isShowingText: true };
+  state = {isShowingText: true};
 
   render() {
     if (!this.state.isShowingText) {
       return null;
     }
 
-    return (
-      <Text>{this.props.text}</Text>
-    );
+    return <Text>{this.props.text}</Text>;
   }
 }
 
 export class BlinkApp extends Component {
   render() {
     return (
-      <View style={{alignItems:'center', top:50}}>
-        <Blink text='I love to blink' />
-        <Blink text='Yes blinking is so great' />
-        <Blink text='Why did they ever take this out of HTML' />
-        <Blink text='Look at me look at me look at me' />
+      <View style={{alignItems: 'center', top: 50}}>
+        <Blink text="I love to blink" />
+        <Blink text="Yes blinking is so great" />
+        <Blink text="Why did they ever take this out of HTML" />
+        <Blink text="Look at me look at me look at me" />
         <Text style={styles.red}>red</Text>
       </View>
     );
   }
 }
-// MARK: Text Exercise 
+// MARK: Text Exercise
 class Greetings extends Component {
   render() {
     return (
       <View style={{alignItems: 'center'}}>
         <Text>Hello {this.props.name}!</Text>
       </View>
-    )
+    );
   }
 }
 
 export class LotsOfGreetings extends Component {
   render() {
     return (
-      <View style={{alignItems:'center', top:50}}>
-        <Greetings name='Rexxar' />
+      <View style={{alignItems: 'center', top: 50}}>
+        <Greetings name="Rexxar" />
       </View>
-    )
+    );
   }
 }
 
@@ -193,10 +186,8 @@ export class LotsOfGreetings extends Component {
 export class Bananas extends Component {
   render() {
     let pic = {
-      uri: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'
+      uri: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
     };
-    return (
-      <Image source={pic} style={{width:193, height: 110}}/>
-    )
+    return <Image source={pic} style={{width: 193, height: 110}} />;
   }
 }
