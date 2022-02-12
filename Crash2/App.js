@@ -15,8 +15,8 @@ import StartGameScreen from './screen/StartGameScreen';
 export default function App() {
   return (
     <View style={styles.screen}>
-      <Header title="Guess a Number"></Header>
-      <StartGameScreen></StartGameScreen>
+      <Header title="Guess a Number!!!" />
+      <StartGameScreen />
     </View>
   );
 }
