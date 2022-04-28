@@ -7,14 +7,8 @@
  */
 
 import React, {useState} from 'react';
-import type {Node} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Linking
-} from 'react-native';
+
+import {StyleSheet, Text, View, Button, Linking} from 'react-native';
 
 import {
   Colors,
@@ -52,10 +46,14 @@ const Section = ({children, title}): Node => {
 
 const App = () => {
   return (
-        <View style={styles.body}>
-          <Text style={styles.text}>Programming with Ken</Text>
-          <Button title='Button Title' onPress={()=>{Linking.openURL('http://google.ca')}}></Button>
-        </View>
+    <View style={styles.body}>
+      <Text style={styles.text}>Programming with Ken</Text>
+      <Button
+        title="Button Title"
+        onPress={() => {
+          Linking.openURL('http://google.ca');
+        }}></Button>
+    </View>
   );
 };
 
@@ -67,11 +65,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color:'#FFFFFF',
-    fontSize:20,
-    fontStyle:'italic',
-    margin: 10
-  }
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontStyle: 'italic',
+    margin: 10,
+  },
 });
 
 export default App;
