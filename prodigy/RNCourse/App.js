@@ -1,12 +1,6 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Button,
-  TextInput,
-  FlatList,
-  Modal,
-} from "react-native";
+import { StyleSheet, View, Button, FlatList } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
@@ -44,40 +38,42 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        title="Add New Goal"
-        color="#5e0acc"
-        onPress={startAddGoalHandler}
-      ></Button>
+    <>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add New Goal"
+          color="#5e0acc"
+          onPress={startAddGoalHandler}
+        ></Button>
 
-      <GoalInput
-        visible={modalIsVisible}
-        onAddGoal={addGoalHandler}
-        onCancel={endAddGoalHandler}
-      />
+        <GoalInput
+          visible={modalIsVisible}
+          onAddGoal={addGoalHandler}
+          onCancel={endAddGoalHandler}
+        />
 
-      <View style={styles.goalsContainer}>
-        {/* FlatList is more efficient and renders cells only when needed. Other items are loaded lazily */}
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                id={itemData.item.id}
-                onDeleteItem={deleteGoalHandler}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-          alwaysBounceVertical="false"
-        ></FlatList>
+        <View style={styles.goalsContainer}>
+          {/* FlatList is more efficient and renders cells only when needed. Other items are loaded lazily */}
+          <FlatList
+            data={courseGoals}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteItem={deleteGoalHandler}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+            alwaysBounceVertical="false"
+          ></FlatList>
 
-        {/* ScrollView renders everything all the time */}
-        {/* <ScrollView alwaysBounceVertical="false">
+          {/* ScrollView renders everything all the time */}
+          {/* <ScrollView alwaysBounceVertical="false">
           {courseGoals.map((goal) => {
             return (
               <View style={styles.goalItem}>
@@ -88,8 +84,9 @@ export default function App() {
             );
           })}
         </ScrollView> */}
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
