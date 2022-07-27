@@ -23,7 +23,6 @@ export default function App() {
       ...currentCourseGoals,
       { id: Math.random().toString(), text: enteredGoalText },
     ]);
-    console.log(enteredGoalText);
     endAddGoalHandler();
   }
 
